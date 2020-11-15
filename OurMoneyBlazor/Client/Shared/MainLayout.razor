@@ -1,0 +1,60 @@
+﻿@inherits LayoutComponentBase
+
+@*<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4">
+        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>*@
+
+<MatAppBarContainer>
+    <MatAppBar Fixed="false">
+        <MatAppBarRow Style="height: 25px">
+            <MatAppBarSection>
+                <MatIconButton Icon="menu" OnClick="@((e) => ToggleButtonClicked())"></MatIconButton>
+                <MatAppBarTitle>Наши деньги</MatAppBarTitle>
+            </MatAppBarSection>
+            <MatAppBarSection Align="@MatAppBarSectionAlign.End">
+                <NavLink class="text-white nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+                <NavLink class="text-white nav-link" href="counter">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Counter
+                </NavLink>
+                <NavLink class="text-white nav-link" href="fetchdata">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                </NavLink>
+                <MatIconButton Icon="favorite"></MatIconButton>
+            </MatAppBarSection>
+        </MatAppBarRow>
+    </MatAppBar>
+
+    <MatAppBarContent>
+        <MatDrawerContainer Style="width: 100vw; height: 100vh;">
+            <MatDrawer @bind-Opened="@menuOpened">
+                <NavMenu/>
+            </MatDrawer>
+            <MatDrawerContent>
+                @Body
+            </MatDrawerContent>
+        </MatDrawerContainer>
+    </MatAppBarContent>
+</MatAppBarContainer>
+
+@code
+{
+    bool menuOpened = true;
+ 
+    void ToggleButtonClicked()
+    {
+        menuOpened = !menuOpened;
+    }
+ 
+}

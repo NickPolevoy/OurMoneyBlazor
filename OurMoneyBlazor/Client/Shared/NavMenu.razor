@@ -1,0 +1,39 @@
+﻿<div class="mat-elevation-z4" style="padding: 10px;">
+    <MatButton OnClick="@(() => navMenu.ToggleAllSubMenus(true))">Expand All</MatButton>
+    <MatButton OnClick="@(() => navMenu.ToggleAllSubMenus(false))">Collapse All</MatButton>
+</div>
+<MatNavMenu @ref="navMenu">
+    <MatNavItem Title="Level 1 Item A">Ввод операций</MatNavItem>
+    <MatNavItem Title="Level 1 Item B">Графики, отчёты, история</MatNavItem>
+
+    <MatNavSubMenu>
+        <MatNavSubMenuHeader Title="Level 1 Sub Menu A">
+            <MatNavItem>
+                <MatIcon Icon="folder" />Справочники
+            </MatNavItem>
+        </MatNavSubMenuHeader>
+        <MatNavSubMenuList>
+            <MatNavItem>Категории затрат</MatNavItem>
+            <MatNavItem>Источники доходов</MatNavItem>
+            <MatNavItem>Места хранения (счета)</MatNavItem>
+            <MatNavItem>Долги, кредиты</MatNavItem>
+            <MatNavItem href="markets">Магазины</MatNavItem>
+        </MatNavSubMenuList>
+    </MatNavSubMenu>
+
+    <MatNavSubMenu>
+        <MatNavSubMenuHeader>
+            <MatNavItem>
+                <MatIcon Icon="folder" />Другое
+            </MatNavItem>
+        </MatNavSubMenuHeader>
+        <MatNavSubMenuList>
+            <MatNavItem>Экспорт и бэкап</MatNavItem>
+            <MatNavItem> Импорт данных</MatNavItem>
+        </MatNavSubMenuList>
+    </MatNavSubMenu>
+</MatNavMenu>
+
+@code {
+    MatNavMenu navMenu;
+}

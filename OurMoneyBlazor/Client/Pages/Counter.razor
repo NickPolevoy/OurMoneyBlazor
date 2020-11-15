@@ -1,0 +1,18 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<h4 class="mat-subtitle1">Simple use</h4>
+<MatButton Icon="favorite" Label="Simple Button"></MatButton>
+<RadzenButton Text="Radzen" Icon="account_circle"  ButtonStyle="ButtonStyle.Info"></RadzenButton>
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

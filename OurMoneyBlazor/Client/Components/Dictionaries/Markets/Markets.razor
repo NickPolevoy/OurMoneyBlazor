@@ -1,0 +1,34 @@
+﻿@page "/markets"
+@inherits MvvmComponentBase<MarketsViewModel>
+
+
+<h3>Markets</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Comment (F)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Bind(x => x.Markets) == null)
+        {
+            <MatProgressBar Indeterminate="true"></MatProgressBar>
+        }
+        else
+        {
+            @foreach (var market in Bind(x => x.Markets)!)
+            {
+                <tr>
+                    <td>@market.Id</td>
+                    <td>@market.Name</td>
+                    <td>@market.Comment</td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+
+
